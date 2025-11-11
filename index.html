@@ -38,6 +38,108 @@
       color: #003366;
       font-weight: bold;
     }
+
+    /* ESTILOS ADICIONALES PARA EL SISTEMA DE PASOS */
+    .paso-navegacion {
+      margin: 30px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 10px;
+    }
+
+    .btn-navegacion {
+      padding: 12px 25px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-anterior {
+      background: #6c757d;
+    }
+
+    .btn-anterior:hover:not(:disabled) {
+      background: #5a6268;
+    }
+
+    .btn-siguiente {
+      background: #28a745;
+    }
+
+    .btn-siguiente:hover:not(:disabled) {
+      background: #218838;
+    }
+
+    .btn-navegacion:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .info-paso {
+      text-align: center;
+    }
+
+    .titulo-paso {
+      font-weight: bold;
+      color: #002855;
+      font-size: 1.1rem;
+    }
+
+    .contador-paso {
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+
+    .contenido-paso {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      margin: 20px 0;
+    }
+
+    .enlace-externo {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .enlace-externo a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .enlace-externo a:hover {
+      text-decoration: underline;
+    }
+
+    /* ESTILOS PARA IFRAMES */
+    iframe {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* SECCIÓN DE NOTA */
+    #seccion-nota {
+      background: #e8f5e8;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 4px solid #28a745;
+      margin: 25px 0;
+    }
+
+    #seccion-nota h3 {
+      color: #155724;
+      margin-top: 0;
+    }
   </style>
 </head>
 <body>
@@ -48,74 +150,102 @@
     <div id="splash-text">Cargando plataforma...</div>
   </div>
 
-<!-- 🌐 ENCABEZADO PROFESIONAL -->
-<header style="
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #ffffff;
-  padding: 30px 40px;
-  border-bottom: 2px solid #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-">
-  <img src="logo.png" alt="Logo Institucional" style="height: 70px; margin-right: 30px;" />
-  <div>
-    <h1 style="
-      margin: 0;
-      color: #002855;
-      font-size: 2rem;
-      font-weight: 600;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    ">
-      Plataforma de Capacitación
-    </h1>
-    <p style="
-      margin: 6px 0 0;
-      color: #666666;
-      font-size: 1rem;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    ">
-      Formación profesional interna para trabajadores
-    </p>
-  </div>
-</header>
+  <!-- 🌐 ENCABEZADO PROFESIONAL -->
+  <header style="
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-bottom: 2px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  ">
+    <img src="logo.png" alt="Logo Institucional" style="height: 70px; margin-right: 30px;" />
+    <div>
+      <h1 style="
+        margin: 0;
+        color: #002855;
+        font-size: 2rem;
+        font-weight: 600;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      ">
+        Plataforma de Capacitación
+      </h1>
+      <p style="
+        margin: 6px 0 0;
+        color: #666666;
+        font-size: 1rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      ">
+        Formación profesional interna para trabajadores
+      </p>
+    </div>
+  </header>
 
   <!-- 🔐 LOGIN -->
-  <section id="login-section">
-    <h2>🔑 Ingreso</h2>
-    <input type="email" id="email" placeholder="Usuario" />
-    <input type="password" id="password" placeholder="Contraseña" />
-    <button onclick="login()">Ingresar</button>
+  <section id="login-section" class="container">
+    <h2>🔑 Ingreso al Sistema</h2>
+    <div class="form-group">
+      <input type="email" id="email" placeholder="Correo electrónico" />
+      <input type="password" id="password" placeholder="Contraseña" />
+      <button onclick="login()" class="btn-primary">Ingresar</button>
+    </div>
+    <p style="text-align: center; margin-top: 15px;">
+      <a href="cambiar-clave.html" style="color: #007bff; text-decoration: none;">¿Olvidaste tu contraseña?</a>
+    </p>
   </section>
 
-  <!-- 📚 CURSOS -->
-  <section id="cursos-disponibles" style="display: none;">
-    <h3>📚 Selecciona un curso</h3>
-    <div id="lista-cursos"></div>
+  <!-- 📚 CURSOS DISPONIBLES -->
+  <section id="cursos-disponibles" style="display: none;" class="container">
+    <h2>📚 Cursos Disponibles</h2>
+    <p>Selecciona un curso para comenzar tu capacitación:</p>
+    <div id="lista-cursos" class="cursos-grid"></div>
   </section>
 
-  <!-- 📺 CURSO DETALLE -->
-  <section id="curso-section" style="display: none;">
+  <!-- 📺 CURSO DETALLE CON SISTEMA DE PASOS -->
+  <section id="curso-section" style="display: none;" class="container">
     <h2 id="titulo-curso"></h2>
-    <div id="video-curso" style="margin: 20px 0;"></div>
-    <p><a id="link-material" target="_blank">📥 Descargar material</a></p>
+    
+    <!-- CONTENIDO DINÁMICO DE PASOS -->
+    <div id="video-curso"></div>
 
-    <h3>📊 Registrar nota</h3>
-    <input type="number" id="nota" placeholder="Escribe tu nota (0-20)" />
-    <button onclick="enviarNota()">Enviar nota</button>
+    <!-- SECCIÓN DE NOTA (SOLO VISIBLE AL FINAL) -->
+    <div id="seccion-nota" style="display: none;">
+      <h3>📊 Finalizar Curso</h3>
+      <p>¡Felicidades! Has completado todos los pasos del curso. Ahora ingresa tu calificación para finalizar:</p>
+      <div style="display: flex; gap: 10px; align-items: center; justify-content: center; margin: 20px 0;">
+        <input type="number" id="nota" placeholder="Nota (0-20)" min="0" max="20" 
+               style="padding: 10px; border: 2px solid #ddd; border-radius: 5px; width: 120px; text-align: center;" />
+        <button onclick="enviarNota()" class="btn-primary">Enviar Nota y Finalizar</button>
+      </div>
+    </div>
 
-    <section id="certificado-section" style="display: none;">
-      <h3>🎓 ¡Felicitaciones!</h3>
-      <p>Has aprobado. Puedes generar tu certificado:</p>
-      <button onclick="generarCertificado()">Generar Certificado PDF</button>
+    <!-- BOTÓN VOLVER -->
+    <button onclick="volverACursos()" class="btn-secondary" style="margin-top: 20px;">
+      ← Volver a Cursos
+    </button>
+
+    <!-- 🎓 CERTIFICADO -->
+    <section id="certificado-section" style="display: none; margin-top: 30px;">
+      <div style="background: #d4edda; padding: 20px; border-radius: 10px; border-left: 4px solid #28a745;">
+        <h3>🎓 ¡Felicitaciones!</h3>
+        <p>Has aprobado el curso satisfactoriamente. Ahora puedes generar tu certificado oficial:</p>
+        <button onclick="generarCertificado()" class="btn-success">
+          🏆 Generar Certificado PDF
+        </button>
+      </div>
     </section>
   </section>
 
-  <!-- ⚙️ ADMIN -->
-<div id="admin-panel" style="display: none;">
-  <h2>👤 Panel de Administrador</h2>
-  <button onclick="window.location.href='admin.html'">Ir al Panel de Administración</button>
-</div>
+  <!-- ⚙️ PANEL ADMIN -->
+  <div id="admin-panel" style="display: none;" class="container">
+    <h2>👨‍💼 Panel de Administración</h2>
+    <div style="text-align: center; margin: 20px 0;">
+      <button onclick="window.location.href='admin.html'" class="btn-primary" style="padding: 12px 30px;">
+        🛠️ Ir al Panel Completo de Administración
+      </button>
+    </div>
+  </div>
 
   <!-- SCRIPTS -->
   <script>
@@ -127,42 +257,18 @@
         setTimeout(() => splash.remove(), 500);
       }, 2500);
     });
+
+    // Función global para volver a cursos
+    window.volverACursos = function() {
+      document.getElementById('curso-section').style.display = 'none';
+      document.getElementById('certificado-section').style.display = 'none';
+      document.getElementById('cursos-disponibles').style.display = 'block';
+    };
   </script>
 
   <script type="module" src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script type="module" src="certificado.js"></script>
 
- <section id="admin-panel" style="display: none;">
-  <h2>👨‍💼 Panel de Administrador</h2>
-
-  <div class="admin-box">
-    <h3>➕ Crear trabajador</h3>
-    <input type="email" id="nuevo-email" placeholder="Correo del trabajador" />
-    <input type="text" id="nuevo-dni" placeholder="DNI (será la contraseña inicial)" />
-    <button onclick="crearTrabajador()">Crear trabajador</button>
-  </div>
-
-  <div class="admin-box">
-    <h3>📚 Subir nuevo curso</h3>
-    <input type="text" id="nuevo-curso" placeholder="Título del curso" />
-    <input type="text" id="link-video" placeholder="Link de YouTube" />
-    <input type="url" id="link-material" placeholder="Link de PDF o PPT" />
-    <button onclick="subirCurso()">Subir curso</button>
-  </div>
-
-  <div class="admin-box">
-    <h3>📊 Ver registros</h3>
-    <button onclick="verRegistros()">Mostrar registros</button>
-    <div id="tabla-registros"></div>
-  </div>
-
-  <div class="admin-box">
-    <h3>🔒 Resetear contraseña</h3>
-    <input type="email" id="email-reset" placeholder="Correo del trabajador" />
-    <input type="text" id="nuevo-pass" placeholder="Nueva contraseña (ej: DNI)" />
-    <button onclick="resetearContrasena()">Resetear</button>
-  </div>
-</section>
 </body>
 </html>
